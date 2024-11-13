@@ -4,6 +4,9 @@ import useCreateProject from "../../hooks/projects/useCreateProject";
 
 const ViewProjectsPage = () => {
   const { projects, loading, error, fetchProjects } = useFetchProjects();
+
+  console.log(projects);
+  
   const {
     createProject,
     loading: createLoading,

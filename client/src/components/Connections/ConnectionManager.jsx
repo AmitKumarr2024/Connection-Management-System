@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useCreateConnection from "../../hooks/connections/useCreateConnection";
 import useGetAllConnections from "../../hooks/connections/useGetAllConnections";
-import useDeleteConnection from "../../hooks/connections/useDeleteConnection";
-import useUpdateConnectionStatus from "../../hooks/connections/useUpdateConnectionStatus";
+
 import useFetchUsers from "../../hooks/useFetchUsers";
 
 const ConnectionManager = ({ userId }) => {
@@ -31,16 +30,6 @@ const ConnectionManager = ({ userId }) => {
     error: fetchAllError,
     fetchConnections,
   } = useGetAllConnections();
-  const {
-    updateConnectionStatus,
-    loading: updatingStatus,
-    error: updateError,
-  } = useUpdateConnectionStatus();
-  const {
-    deleteConnection,
-    loading: deleting,
-    error: deleteError,
-  } = useDeleteConnection();
 
   console.log("connection", connections);
 
@@ -57,24 +46,9 @@ const ConnectionManager = ({ userId }) => {
     }
   };
 
-  const handleUpdateStatus = async (connectionId, status) => {
-    setSelectedConnectionId(connectionId);
-    await updateConnectionStatus(connectionId, status);
-    fetchConnections(); // Trigger a refetch after status update.
-  };
-
-  const handleDeleteConnection = async (connectionId) => {
-    if (window.confirm("Are you sure you want to delete this connection?")) {
-      setSelectedConnectionId(connectionId);
-      await deleteConnection(connectionId);
-      fetchConnections(); // Trigger a refetch after deletion.
-    }
-  };
-
   useEffect(() => {
     fetchConnections();
   }, []); // Empty array to call only once when the component mounts
-  
 
   return (
     <div className="p-8 bg-gray-50 min-h-screen">
@@ -189,47 +163,16 @@ const ConnectionManager = ({ userId }) => {
                     {connection.status}
                   </span>
                   <p>
-                    Connection Type: <span className="text-sky-500 font-extrabold">{connection.connectionType}</span>
+                    Connection Type:{" "}
+                    <span className="text-sky-500 font-extrabold">
+                      {connection.connectionType}
+                    </span>
                   </p>
-                </div>
-
-                {/* Action buttons */}
-                <div className="mt-4 space-x-2">
-                  <button
-                    onClick={() =>
-                      handleUpdateStatus(connection._id, "accepted")
-                    }
-                    disabled={updatingStatus}
-                    className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 disabled:opacity-50"
-                  >
-                    Accept
-                  </button>
-                  <button
-                    onClick={() =>
-                      handleUpdateStatus(connection._id, "rejected")
-                    }
-                    disabled={updatingStatus}
-                    className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 disabled:opacity-50"
-                  >
-                    Reject
-                  </button>
-                  <button
-                    onClick={() => handleDeleteConnection(connection._id)}
-                    disabled={deleting}
-                    className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 disabled:opacity-50"
-                  >
-                    Delete
-                  </button>
                 </div>
               </div>
             ))}
           </div>
         )}
-
-        {/* Errors */}
-        {fetchAllError && <p className="text-red-500 mt-2">{fetchAllError}</p>}
-        {deleteError && <p className="text-red-500 mt-4">{deleteError}</p>}
-        {updateError && <p className="text-red-500 mt-4">{updateError}</p>}
       </div>
     </div>
   );

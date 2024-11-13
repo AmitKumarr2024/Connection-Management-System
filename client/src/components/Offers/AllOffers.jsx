@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 const AllOffers = () => {
   const { offers, loading, error } = useFetchOffers();
+  console.log(offers);
+  
 
   if (loading)
     return <div className="flex justify-center items-center h-screen">Loading offers...</div>;

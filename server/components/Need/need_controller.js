@@ -61,9 +61,7 @@ export const viewNeeds = async (req, res) => {
 // View a single need
 export const viewSingleNeed = async (req, res) => {
   try {
-    const {id}  = req.params;
-   
-    
+    const { id } = req.params;
 
     const need = await NeedModel.findById(id);
     if (!need) {
@@ -80,6 +78,47 @@ export const viewSingleNeed = async (req, res) => {
     });
   } catch (error) {
     console.error("Error in viewSingleNeed controller", error.message);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// Update need status
+export const updateNeedStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    
+
+    // Ensure status is one of the allowed enum values
+    if (!["Pending", "Resolved"].includes(status)) {
+      return res.status(400).json({
+        message: "Invalid status. Allowed values are 'Pending' or 'Resolved'.",
+        error: true,
+      });
+    }
+
+    // Find the need by ID and update its status
+    const updatedNeed = await NeedModel.findByIdAndUpdate(
+      id,
+      { status },
+      { new: true } // Return the updated document
+    );
+
+    if (!updatedNeed) {
+      return res.status(404).json({
+        message: "Need not found",
+        error: true,
+      });
+    }
+
+    return res.status(200).json({
+      message: "Need status updated successfully",
+      data: updatedNeed,
+      success: true,
+    });
+  } catch (error) {
+    console.error("Error in updateNeedStatus controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
