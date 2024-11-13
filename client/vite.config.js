@@ -8,9 +8,9 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:8008",
+        // target: "http://localhost:8008",
 
-        // target: 'https://connection-management-system.onrender.com',
+        target: 'https://connection-management-system.onrender.com',
         // Your backend URL
         changeOrigin: true,
         secure: false,
