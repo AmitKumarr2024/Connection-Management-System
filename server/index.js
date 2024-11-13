@@ -9,6 +9,7 @@ import OfferRoute from "./components/Offers/offer_routes.js";
 import NeedRoute from "./components/Need/need_routes.js";
 import ProjectRoute from "./components/Project/project_routes.js";
 import ConnectionRouter from "./components/Connection/connection_routes.js";
+import ReportRouter from "./components/report/report.routes.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -36,6 +37,7 @@ app.use("/api/offer/", OfferRoute);
 app.use("/api/need/", NeedRoute);
 app.use("/api/projects/", ProjectRoute);
 app.use("/api/connection", ConnectionRouter);
+app.use("/api/report", ReportRouter);
 
 app.listen(Port, () => {
   console.log("Server started successfully on port", Port);

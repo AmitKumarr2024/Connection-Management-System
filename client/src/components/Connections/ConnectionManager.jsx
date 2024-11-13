@@ -1,54 +1,41 @@
 import React, { useState, useEffect } from "react";
 import useCreateConnection from "../../hooks/connections/useCreateConnection";
 import useGetAllConnections from "../../hooks/connections/useGetAllConnections";
-
 import useFetchUsers from "../../hooks/useFetchUsers";
 
+// Component to manage creating and viewing connections between users
 const ConnectionManager = ({ userId }) => {
+  // Initial connection form data
   const [connectionData, setConnectionData] = useState({
     user1: "",
     user2: "",
     connectionType: "",
     status: "pending",
   });
+  
+  // State for updating connection status and selected connection ID
   const [statusToUpdate, setStatusToUpdate] = useState(null);
   const [selectedConnectionId, setSelectedConnectionId] = useState(null);
 
-  const {
-    users,
-    loading: fetchingUsers,
-    error: fetchUsersError,
-  } = useFetchUsers();
-  const {
-    createConnection,
-    loading: creating,
-    error: createError,
-  } = useCreateConnection();
-  const {
-    connections,
-    loading: fetchingAll,
-    error: fetchAllError,
-    fetchConnections,
-  } = useGetAllConnections();
+  // Custom hooks to fetch users, create a connection, and get all connections
+  const { users, loading: fetchingUsers, error: fetchUsersError } = useFetchUsers();
+  const { createConnection, loading: creating, error: createError } = useCreateConnection();
+  const { connections, loading: fetchingAll, error: fetchAllError, fetchConnections } = useGetAllConnections();
 
-  console.log("connection", connections);
-
+  // Function to handle creating a new connection
   const handleCreateConnection = async () => {
     const result = await createConnection(connectionData);
     if (result) {
-      setConnectionData({
-        user1: "",
-        user2: "",
-        connectionType: "",
-        status: "pending",
-      });
-      fetchConnections(); // Trigger a refetch of connections after creating.
+      // Reset the form and fetch updated connections list
+      setConnectionData({ user1: "", user2: "", connectionType: "", status: "pending" });
+      fetchConnections();
     }
   };
 
+  // Fetch connections when the component loads
   useEffect(() => {
     fetchConnections();
-  }, []); // Empty array to call only once when the component mounts
+  }, []);
 
   return (
     <div className="p-8 bg-gray-50 min-h-screen">
@@ -56,56 +43,37 @@ const ConnectionManager = ({ userId }) => {
         Manage Connections
       </h2>
 
-      {/* Create Connection Form */}
+      {/* Form to create a new connection */}
       <div className="bg-white shadow-md rounded-lg p-6 mb-8">
         <h3 className="text-xl font-semibold text-gray-700 mb-4">
           Create New Connection
         </h3>
+        
+        {/* User and Connection Type Selectors */}
         <div className="grid grid-cols-1 gap-4">
           <select
             value={connectionData.user1}
-            onChange={(e) =>
-              setConnectionData({ ...connectionData, user1: e.target.value })
-            }
+            onChange={(e) => setConnectionData({ ...connectionData, user1: e.target.value })}
             className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             <option value="">Select User 1</option>
-            {fetchingUsers ? (
-              <option>Loading users...</option>
-            ) : (
-              users.map((user) => (
-                <option key={user._id} value={user._id}>
-                  {user.fullName}
-                </option>
-              ))
-            )}
+            {fetchingUsers ? <option>Loading users...</option> : users.map((user) => (
+              <option key={user._id} value={user._id}>{user.fullName}</option>
+            ))}
           </select>
           <select
             value={connectionData.user2}
-            onChange={(e) =>
-              setConnectionData({ ...connectionData, user2: e.target.value })
-            }
+            onChange={(e) => setConnectionData({ ...connectionData, user2: e.target.value })}
             className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             <option value="">Select User 2</option>
-            {fetchingUsers ? (
-              <option>Loading users...</option>
-            ) : (
-              users.map((user) => (
-                <option key={user._id} value={user._id}>
-                  {user.fullName}
-                </option>
-              ))
-            )}
+            {fetchingUsers ? <option>Loading users...</option> : users.map((user) => (
+              <option key={user._id} value={user._id}>{user.fullName}</option>
+            ))}
           </select>
           <select
             value={connectionData.connectionType}
-            onChange={(e) =>
-              setConnectionData({
-                ...connectionData,
-                connectionType: e.target.value,
-              })
-            }
+            onChange={(e) => setConnectionData({ ...connectionData, connectionType: e.target.value })}
             className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             <option value="">Select Connection Type</option>
@@ -115,9 +83,7 @@ const ConnectionManager = ({ userId }) => {
           </select>
           <select
             value={connectionData.status}
-            onChange={(e) =>
-              setConnectionData({ ...connectionData, status: e.target.value })
-            }
+            onChange={(e) => setConnectionData({ ...connectionData, status: e.target.value })}
             className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             <option value="pending">Pending</option>
@@ -135,7 +101,7 @@ const ConnectionManager = ({ userId }) => {
         {createError && <p className="text-red-500 mt-2">{createError}</p>}
       </div>
 
-      {/* Display All Connections */}
+      {/* Display all created connections */}
       <div className="bg-white shadow-lg rounded-xl p-6 space-y-6">
         <h3 className="text-2xl font-semibold text-gray-800">
           All Connections
@@ -155,18 +121,13 @@ const ConnectionManager = ({ userId }) => {
                   </h4>
                   <span
                     className={`text-sm ${
-                      connection.status === "accepted"
-                        ? "text-green-500"
-                        : "text-gray-500"
+                      connection.status === "accepted" ? "text-green-500" : "text-gray-500"
                     }`}
                   >
                     {connection.status}
                   </span>
                   <p>
-                    Connection Type:{" "}
-                    <span className="text-sky-500 font-extrabold">
-                      {connection.connectionType}
-                    </span>
+                    Connection Type: <span className="text-sky-500 font-extrabold">{connection.connectionType}</span>
                   </p>
                 </div>
               </div>

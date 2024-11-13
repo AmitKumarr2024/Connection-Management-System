@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+
+// Importing custom hooks for handling different data types (connections, needs, offers, projects).
 import useGetAllConnections from "../../hooks/connections/useGetAllConnections";
 import useUpdateConnectionStatus from "../../hooks/connections/useUpdateConnectionStatus";
 import useFetchNeeds from "../../hooks/need/useFetchAllNeed";
@@ -8,6 +10,7 @@ import useUpdateNeed from "../../hooks/need/useUpdateNeed";
 import useUpdateProjectStatus from "../../hooks/projects/useUpdateProjectStatus";
 
 const UserNotification = ({ userId }) => {
+  // Getting data for connections, needs, offers, and projects.
   const {
     connections,
     loading: fetchingAll,
@@ -38,36 +41,34 @@ const UserNotification = ({ userId }) => {
     error: projectError,
   } = useUpdateProjectStatus();
 
-  // Handle connection update
+  // Function to handle updating connection status (accept/reject)
   const handleConnectionUpdate = (connectionId, status) => {
-    updateConnectionStatus(connectionId, status);
-    setNotifications((prev) => [
+    updateConnectionStatus(connectionId, status);  // Updates the connection status
+    setNotifications((prev) => [  // Adds a notification to the list
       ...prev,
-      {
-        message: `Your connection status has been updated to ${status}`,
-        userId: connectionId,
-      },
+      { message: `Your connection status has been updated to ${status}`, userId: connectionId },
     ]);
   };
 
-  // Handle project status update
+  // Function to handle updating project status (active, completed, paused)
   const handleUpdateProjectStatus = (projectId, status) => {
-    updateProjectStatus(projectId, status);
+    updateProjectStatus(projectId, status);  // Updates the project status
     setNotifications((prev) => [
       ...prev,
       { message: `Project status updated to ${status}`, userId: projectId },
     ]);
   };
 
-  // Handle need status update
+  // Function to handle updating need status (pending, resolved)
   const handleUpdateNeedStatus = (needId, status) => {
-    updateNeedStatus(needId, status);
+    updateNeedStatus(needId, status);  // Updates the need status
     setNotifications((prev) => [
       ...prev,
       { message: `Need status updated to ${status}`, userId: needId },
     ]);
   };
 
+  // Filtering data based on the current user
   const userConnections = (connections || []).filter(
     (connection) =>
       connection.user1._id === userId || connection.user2._id === userId
@@ -80,10 +81,11 @@ const UserNotification = ({ userId }) => {
 
   console.log("filteredOffers", filteredOffers);
 
+  // Loading state handling
   if (fetchingAll || needsLoading || offersLoading || projectsLoading)
-    return <div>Loading...</div>;
+    return <div>Loading...</div>;  // Shows a loading message while data is being fetched
   if (fetchAllError || needsError || offersError || projectsError)
-    return <div>Error occurred</div>;
+    return <div>Error occurred</div>;  // Shows an error message if fetching data failed
 
   return (
     <div className="p-6">
@@ -109,11 +111,7 @@ const UserNotification = ({ userId }) => {
                   {connection.user1.fullName} ↔ {connection.user2.fullName}
                 </h4>
                 <span
-                  className={`text-sm ${
-                    connection.status === "accepted"
-                      ? "text-green-500"
-                      : "text-gray-500"
-                  }`}
+                  className={`text-sm ${connection.status === "accepted" ? "text-green-500" : "text-gray-500"}`}
                 >
                   {connection.status}
                 </span>
@@ -125,18 +123,14 @@ const UserNotification = ({ userId }) => {
                 </p>
                 <div className="mt-4 space-x-2">
                   <button
-                    onClick={() =>
-                      handleConnectionUpdate(connection._id, "accepted")
-                    }
+                    onClick={() => handleConnectionUpdate(connection._id, "accepted")}
                     disabled={updatingStatus}
                     className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 disabled:opacity-50"
                   >
                     Accept
                   </button>
                   <button
-                    onClick={() =>
-                      handleConnectionUpdate(connection._id, "rejected")
-                    }
+                    onClick={() => handleConnectionUpdate(connection._id, "rejected")}
                     disabled={updatingStatus}
                     className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 disabled:opacity-50"
                   >
@@ -170,9 +164,7 @@ const UserNotification = ({ userId }) => {
                 </span>
                 <select
                   value={need.status}
-                  onChange={(e) =>
-                    handleUpdateNeedStatus(need._id, e.target.value)
-                  }
+                  onChange={(e) => handleUpdateNeedStatus(need._id, e.target.value)}
                   className="mt-2 border p-2"
                 >
                   <option value="Pending">Pending</option>
@@ -229,33 +221,26 @@ const UserNotification = ({ userId }) => {
                 className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300"
               >
                 <h4 className="text-lg font-semibold text-gray-800">
-                  {project.projectName}
+                  {project.title}
                 </h4>
                 <p className="text-gray-600">{project.description}</p>
-                <span className="text-sm text-blue-500">
-                  Resources Needed: {project.resourcesNeeded.join(", ")}
+                <span className="text-sm text-yellow-500">
+                  Status: {project.status}
                 </span>
                 <select
                   value={project.status}
-                  onChange={(e) =>
-                    handleUpdateProjectStatus(project._id, e.target.value)
-                  }
+                  onChange={(e) => handleUpdateProjectStatus(project._id, e.target.value)}
                   className="mt-2 border p-2"
                 >
                   <option value="active">Active</option>
-                  <option value="completed">Completed</option>
                   <option value="paused">Paused</option>
+                  <option value="completed">Completed</option>
                 </select>
               </div>
             ))}
           </div>
         )}
       </div>
-
-      {/* Error messages */}
-      {fetchAllError && <p className="text-red-500 mt-2">{fetchAllError}</p>}
-      {updateError && <p className="text-red-500 mt-4">{updateError}</p>}
-      {projectError && <p className="text-red-500 mt-4">{projectError}</p>}
     </div>
   );
 };
