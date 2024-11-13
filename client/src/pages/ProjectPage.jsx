@@ -8,7 +8,7 @@ const ProjectPage = () => {
   // Fetching projects when the component mounts
   useEffect(() => {
     const fetchProjects = async () => {
-      const response = await fetch("http://localhost:8008/api/projects/all-project");
+      const response = await fetch("/api/projects/all-project");
       const data = await response.json();
       setProjects(data);
     };

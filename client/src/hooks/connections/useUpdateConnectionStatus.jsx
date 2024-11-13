@@ -7,7 +7,7 @@ const useUpdateConnectionStatus = () => {
   const updateConnectionStatus = async (connectionId, status) => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:8008/api/connection/update-status', {
+      const response = await fetch('/api/connection/update-status', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

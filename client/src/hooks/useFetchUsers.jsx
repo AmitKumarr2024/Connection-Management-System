@@ -8,7 +8,7 @@ const useFetchUsers = () => {
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:8008/api/user/all-user");
+      const response = await fetch("/api/user/all-user");
       if (!response.ok) {
         throw new Error("Failed to fetch users");
       }

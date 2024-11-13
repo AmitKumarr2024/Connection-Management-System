@@ -8,7 +8,7 @@ const useFetchUser = (id) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch(`http://localhost:8008/api/user/one-user/${id}`);
+        const response = await fetch(`/api/user/one-user/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch user");
         }

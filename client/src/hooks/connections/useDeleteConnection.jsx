@@ -7,7 +7,7 @@ const useDeleteConnection = () => {
   const deleteConnection = async (connectionId) => {
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:8008/api/connection/delete/${connectionId}`, {
+      const response = await fetch(`/api/connection/delete/${connectionId}`, {
         method: 'DELETE',
       });
       const result = await response.json();

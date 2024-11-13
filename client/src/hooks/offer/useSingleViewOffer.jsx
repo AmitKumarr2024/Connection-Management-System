@@ -12,7 +12,7 @@ const useFetchSingleOffer = (offerId) => {
 
       try {
         const response = await fetch(
-          `http://localhost:8008/api/offer/one-offer/${offerId}`
+          `/api/offer/one-offer/${offerId}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch offer");

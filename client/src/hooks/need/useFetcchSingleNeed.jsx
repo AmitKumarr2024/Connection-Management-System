@@ -11,7 +11,7 @@ const useFetchSingleNeed = (id) => {
       setError(null);
 
       try {
-        const response = await fetch(`http://localhost:8008/api/need/${id}`);
+        const response = await fetch(`/api/need/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch need");
         }

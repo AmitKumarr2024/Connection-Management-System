@@ -29,7 +29,7 @@ const CreateUser = ({ onClose, refetchUsers }) => {
     };
 
     try {
-      const response = await fetch("http://localhost:8008/api/user/create", {
+      const response = await fetch("/api/user/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

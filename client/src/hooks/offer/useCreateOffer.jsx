@@ -11,7 +11,7 @@ const useCreateOffer = () => {
     setSuccess(false);
 
     try {
-      const response = await fetch("http://localhost:8008/api/offer/create-offer", {
+      const response = await fetch("/api/offer/create-offer", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

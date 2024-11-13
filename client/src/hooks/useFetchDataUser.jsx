@@ -7,7 +7,7 @@ const useUserData = (userId) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://localhost:8008/api/user/one-user-module/${userId}`);
+        const response = await fetch(`/api/user/one-user-module/${userId}`);
         const result = await response.json();
 
         if (result.success) {

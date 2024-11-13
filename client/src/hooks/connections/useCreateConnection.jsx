@@ -7,7 +7,7 @@ const useCreateConnection = () => {
   const createConnection = async (data) => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:8008/api/connection/create', {
+      const response = await fetch('/api/connection/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

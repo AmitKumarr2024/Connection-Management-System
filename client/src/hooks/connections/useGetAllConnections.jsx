@@ -9,7 +9,7 @@ const useGetAllConnections = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        "http://localhost:8008/api/connection/all-connection"
+        "/api/connection/all-connection"
       );
       const result = await response.json();
       if (result.data) {

@@ -11,7 +11,7 @@ const useCreateNeed = () => {
     setSuccess(false);
 
     try {
-      const response = await fetch("http://localhost:8008/api/need/create", {
+      const response = await fetch("/api/need/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
