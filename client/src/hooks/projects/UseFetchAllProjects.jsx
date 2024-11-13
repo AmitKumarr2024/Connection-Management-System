@@ -13,7 +13,7 @@ const useFetchProjects = () => {
 
   const fetchProjects = async () => {
     try {
-      const response = await fetch("http://localhost:8008/api/projects/all-project");
+      const response = await fetch("/api/projects/all-project");
       if (!response.ok) throw new Error("Failed to fetch projects");
       const data = await response.json();
       // Use the ref to update the state
