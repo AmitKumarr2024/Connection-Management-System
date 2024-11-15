@@ -12,27 +12,38 @@ const NeedsList = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="container">
-      <h2>All Needs</h2>
-      <ul>
-        {needs.map((need) => (
-          <li key={need._id} className="need-item">
-            {/* Display need description */}
-            <p>{need.description}</p>
-            
-            {/* Display need category */}
-            <p>Category: {need.category}</p>
-            
-            {/* Display need status with conditional styling */}
-            <p>Status: 
-              <span className={need.status === "completed" ? "completed" : "pending"}>
-                {need.status}
-              </span>
-            </p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <div className="max-w-4xl mx-auto p-6 bg-gray-100 shadow-md rounded-md">
+  <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">All Needs</h2>
+  
+  <ul className="space-y-4">
+    {needs.map((need) => (
+      <li key={need._id} className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition">
+        {/* Need description */}
+        <p className="text-lg font-semibold text-gray-800 mb-2">{need.description}</p>
+        
+        {/* Need category */}
+        <p className="text-sm text-gray-600 mb-2">
+          <span className="font-medium text-gray-700">Category:</span> {need.category}
+        </p>
+        
+        {/* Need status */}
+        <p className="text-sm text-gray-600">
+          <span className="font-medium text-gray-700">Status:</span> 
+          <span
+            className={`ml-2 px-2 py-1 rounded-full text-xs font-semibold ${
+              need.status === "completed"
+                ? "bg-green-100 text-green-600"
+                : "bg-yellow-100 text-yellow-600"
+            }`}
+          >
+            {need.status.charAt(0).toUpperCase() + need.status.slice(1)}
+          </span>
+        </p>
+      </li>
+    ))}
+  </ul>
+</div>
+
   );
 };
 
