@@ -15,9 +15,7 @@ const NeedPage = () => {
 
           {/* Create New Need Form Section */}
           <div className="bg-white p-8 rounded-xl shadow-lg">
-            <h2 className="text-3xl font-semibold text-gray-900 text-center mb-6">
-              Create New Need
-            </h2>
+           
             <CreateNeedForm />
           </div>
         </div>
