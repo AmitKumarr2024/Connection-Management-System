@@ -1,0 +1,84 @@
+2025-01-14T16:54:14.397Z [32minfo[39m: Initializing the server...
+2025-01-14T16:54:14.400Z [32minfo[39m: CORS configured successfully.
+2025-01-14T16:54:14.401Z [32minfo[39m: Static files served from /client/dist.
+2025-01-14T16:54:14.402Z [32minfo[39m: Body parsers configured (JSON and URL-encoded).
+2025-01-14T16:54:14.403Z [32minfo[39m: Cookie parser initialized.
+2025-01-14T16:54:14.403Z [32minfo[39m: User routes configured.
+2025-01-14T16:54:14.403Z [32minfo[39m: Offer routes configured.
+2025-01-14T16:54:14.404Z [32minfo[39m: Need routes configured.
+2025-01-14T16:54:14.404Z [32minfo[39m: Project routes configured.
+2025-01-14T16:54:14.405Z [32minfo[39m: Connection routes configured.
+2025-01-14T16:54:14.405Z [32minfo[39m: Report routes configured.
+2025-01-14T16:54:14.408Z [32minfo[39m: Server started successfully on port 8008
+2025-01-14T16:54:35.766Z [32minfo[39m: Initializing the server...
+2025-01-14T16:54:35.769Z [32minfo[39m: CORS configured successfully.
+2025-01-14T16:54:35.770Z [32minfo[39m: Static files served from /client/dist.
+2025-01-14T16:54:35.771Z [32minfo[39m: Body parsers configured (JSON and URL-encoded).
+2025-01-14T16:54:35.771Z [32minfo[39m: Cookie parser initialized.
+2025-01-14T16:54:35.772Z [32minfo[39m: User routes configured.
+2025-01-14T16:54:35.772Z [32minfo[39m: Offer routes configured.
+2025-01-14T16:54:35.772Z [32minfo[39m: Need routes configured.
+2025-01-14T16:54:35.772Z [32minfo[39m: Project routes configured.
+2025-01-14T16:54:35.773Z [32minfo[39m: Connection routes configured.
+2025-01-14T16:54:35.773Z [32minfo[39m: Report routes configured.
+2025-01-14T16:54:35.776Z [32minfo[39m: Server started successfully on port 8008
+2025-01-14T16:55:06.829Z [32minfo[39m: Initializing the server...
+2025-01-14T16:55:06.831Z [32minfo[39m: CORS configured successfully.
+2025-01-14T16:55:06.832Z [32minfo[39m: Static files served from /client/dist.
+2025-01-14T16:55:06.833Z [32minfo[39m: Body parsers configured (JSON and URL-encoded).
+2025-01-14T16:55:06.833Z [32minfo[39m: Cookie parser initialized.
+2025-01-14T16:55:06.834Z [32minfo[39m: User routes configured.
+2025-01-14T16:55:06.834Z [32minfo[39m: Offer routes configured.
+2025-01-14T16:55:06.834Z [32minfo[39m: Need routes configured.
+2025-01-14T16:55:06.835Z [32minfo[39m: Project routes configured.
+2025-01-14T16:55:06.835Z [32minfo[39m: Connection routes configured.
+2025-01-14T16:55:06.836Z [32minfo[39m: Report routes configured.
+2025-01-14T16:55:06.839Z [32minfo[39m: Server started successfully on port 8008
+2025-01-14T16:55:11.738Z [32minfo[39m: Initializing the server...
+2025-01-14T16:55:11.741Z [32minfo[39m: CORS configured successfully.
+2025-01-14T16:55:11.742Z [32minfo[39m: Static files served from /client/dist.
+2025-01-14T16:55:11.743Z [32minfo[39m: Body parsers configured (JSON and URL-encoded).
+2025-01-14T16:55:11.744Z [32minfo[39m: Cookie parser initialized.
+2025-01-14T16:55:11.744Z [32minfo[39m: User routes configured.
+2025-01-14T16:55:11.744Z [32minfo[39m: Offer routes configured.
+2025-01-14T16:55:11.745Z [32minfo[39m: Need routes configured.
+2025-01-14T16:55:11.745Z [32minfo[39m: Project routes configured.
+2025-01-14T16:55:11.746Z [32minfo[39m: Connection routes configured.
+2025-01-14T16:55:11.746Z [32minfo[39m: Report routes configured.
+2025-01-14T16:55:11.750Z [32minfo[39m: Server started successfully on port 8008
+2025-01-14T16:59:37.974Z [32minfo[39m: Initializing the server...
+2025-01-14T16:59:37.977Z [32minfo[39m: CORS configured successfully.
+2025-01-14T16:59:37.978Z [32minfo[39m: Static files served from /client/dist.
+2025-01-14T16:59:37.979Z [32minfo[39m: Body parsers configured (JSON and URL-encoded).
+2025-01-14T16:59:37.979Z [32minfo[39m: Cookie parser initialized.
+2025-01-14T16:59:37.979Z [32minfo[39m: User routes configured.
+2025-01-14T16:59:37.980Z [32minfo[39m: Offer routes configured.
+2025-01-14T16:59:37.980Z [32minfo[39m: Need routes configured.
+2025-01-14T16:59:37.980Z [32minfo[39m: Project routes configured.
+2025-01-14T16:59:37.980Z [32minfo[39m: Connection routes configured.
+2025-01-14T16:59:37.981Z [32minfo[39m: Report routes configured.
+2025-01-14T16:59:37.984Z [32minfo[39m: Server started successfully on port 8008
+2025-01-14T17:00:11.623Z [32minfo[39m: Initializing the server...
+2025-01-14T17:00:11.626Z [32minfo[39m: CORS configured successfully.
+2025-01-14T17:00:11.628Z [32minfo[39m: Static files served from /client/dist.
+2025-01-14T17:00:11.631Z [32minfo[39m: Body parsers configured (JSON and URL-encoded).
+2025-01-14T17:00:11.631Z [32minfo[39m: Cookie parser initialized.
+2025-01-14T17:00:11.632Z [32minfo[39m: User routes configured.
+2025-01-14T17:00:11.633Z [32minfo[39m: Offer routes configured.
+2025-01-14T17:00:11.633Z [32minfo[39m: Need routes configured.
+2025-01-14T17:00:11.633Z [32minfo[39m: Project routes configured.
+2025-01-14T17:00:11.634Z [32minfo[39m: Connection routes configured.
+2025-01-14T17:00:11.634Z [32minfo[39m: Report routes configured.
+2025-01-14T17:00:11.638Z [32minfo[39m: Server started successfully on port 8008
+2025-01-14T17:00:17.653Z [32minfo[39m: Initializing the server...
+2025-01-14T17:00:17.658Z [32minfo[39m: CORS configured successfully.
+2025-01-14T17:00:17.661Z [32minfo[39m: Static files served from /client/dist.
+2025-01-14T17:00:17.664Z [32minfo[39m: Body parsers configured (JSON and URL-encoded).
+2025-01-14T17:00:17.665Z [32minfo[39m: Cookie parser initialized.
+2025-01-14T17:00:17.666Z [32minfo[39m: User routes configured.
+2025-01-14T17:00:17.667Z [32minfo[39m: Offer routes configured.
+2025-01-14T17:00:17.667Z [32minfo[39m: Need routes configured.
+2025-01-14T17:00:17.668Z [32minfo[39m: Project routes configured.
+2025-01-14T17:00:17.669Z [32minfo[39m: Connection routes configured.
+2025-01-14T17:00:17.670Z [32minfo[39m: Report routes configured.
+2025-01-14T17:00:17.675Z [32minfo[39m: Server started successfully on port 8008
