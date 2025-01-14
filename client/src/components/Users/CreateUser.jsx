@@ -50,11 +50,7 @@ const CreateUser = ({ onClose, refetchUsers }) => {
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white p-6 rounded-lg w-96">
         <div className="flex justify-between flex-row-reverse items-center">
-<<<<<<< HEAD
           <button className="text-xl font-bold" onClick={onClose}>
-=======
-          <button className="text-xl font-bold" onClick={onClose}> 
->>>>>>> 1e0b9db49b6daae4991f6ff4d0d3081cae8bfe1d
             X
           </button>
           <h2 className="text-2xl mb-4">Create User</h2>
